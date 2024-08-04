@@ -1,13 +1,13 @@
-## Card Manager Application Documentation
+## Card Listing Application Documentation
 
 ### Overview
 
-The Card Manager application is a web-based platform for managing card entries. Users can add new cards, view the list of cards, transcribe audio input into text, and download the card list as a CSV file. The application is built with React for the frontend and Node.js for the backend, integrating with the Whisper API for audio transcription.
+The Card Listing application is a web-based platform for managing card entries. Users can add new cards, view the list of cards, transcribe audio input into text, and download the card list as a CSV file. The application is built with React for the frontend and Node.js for the backend, integrating with the Whisper API for audio transcription.
 
 ### Repository Structure
 
 ```
-card-manager-app/
+card-listing-app/
 │
 ├── backend/
 │   ├── src/

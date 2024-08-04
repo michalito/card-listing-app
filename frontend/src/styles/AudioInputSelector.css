@@ -1,0 +1,14 @@
+.audio-input-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.audio-input-selector label {
+  font-weight: bold;
+}
+
+.audio-input-selector select {
+  padding: 5px;
+}

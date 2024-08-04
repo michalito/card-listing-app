@@ -89,3 +89,58 @@ card-listing-app/
 5. **Performance Optimization**:
    - Optimize performance for large card lists.
    - Implement pagination or infinite scrolling for the card list to improve load times and user experience.
+
+### Getting Started
+
+#### Prerequisites
+
+- Docker
+- Docker Compose
+
+#### Setting Up the Environment
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/your-username/card-manager-app.git
+cd card-manager-app
+```
+
+2. **Create the `.env` File**
+
+Copy the `.env.example` file to create a new `.env` file in the `backend` directory.
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+3. **Update the `.env` File**
+
+Edit the `.env` file to include your OpenAI API key.
+
+**backend/.env**
+
+```
+OPENAI_API_KEY=your-openai-api-key
+```
+
+#### Running the Application
+
+1. **Build and Run the Docker Containers**
+
+Use Docker Compose to build and run the application.
+
+```bash
+docker-compose up --build
+```
+
+2. **Access the Application**
+
+- The frontend will be accessible at `http://localhost:3000`.
+- The backend API will be accessible at `http://localhost:5000`.
+
+### Additional Information
+
+- **Backend**: The backend is built with Node.js and Express. It handles API requests, processes audio files, and interacts with the Whisper API for transcription.
+- **Frontend**: The frontend is built with React. It provides a user interface for managing cards, including adding new cards, viewing the card list, transcribing audio, and downloading the card list as a CSV file.
+- **Whisper API Integration**: The application integrates with the Whisper API for transcribing audio input into text. Ensure you have a valid OpenAI API key and update the `.env` file accordingly.

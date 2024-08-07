@@ -1,194 +1,220 @@
 body, html, #root, .app-container {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #f0f0f0;
-  }
-  
-  .navbar {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-left {
-    font-size: 24px;
-    color: white;
-  }
-  
-  .navbar-center {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-center .audio-settings {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-center .audio-settings label {
-    color: white;
-    margin-right: 10px;
-  }
-  
-  .navbar-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .toggle-audio-controls-btn {
-    padding: 10px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #4CAF50;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .toggle-audio-controls-btn:hover {
-    background-color: #eee;
-  }
-  
-  .stream-btn {
-    padding: 10px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .stream-btn:hover {
-    background-color: #45a049;
-  }
-  
-  .app-container {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    overflow-x: hidden; /* Prevent horizontal overflow */
-  }
-  
-  .content {
-    display: flex;
-    width: 100%;
-    flex: 1;
-    overflow-x: hidden; /* Prevent horizontal overflow */
-    padding-right: 20px; /* Add padding to the right */
-  }
-  
-  .card-list-container {
-    flex: 2;
-    padding: 20px;
-    border-right: 2px solid #ccc;
-    overflow-y: auto;
-    overflow-x: hidden; /* Prevent horizontal overflow */
-  }
-  
-  .card-list-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .card-form {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    max-width: 300px; /* Set a maximum width for the form */
-    height: calc(100vh - 160px); /* Fit the form to the page vertically */
-    overflow-y: auto;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-  
-  .form-group label {
-    margin-bottom: 5px;
-  }
-  
-  .card-form input, .card-form textarea, .card-form select {
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .card-form button {
-    padding: 10px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .card-form button:hover {
-    background-color: #45a049;
-  }
-  
-  .card-form button.recording {
-    background-color: #ff0000;
-  }
-  
-  .audio-controls {
-    margin-bottom: 20px;
-  }
-  
-  .transcribing {
-    color: #ff0000;
-    font-weight: bold;
-  }
-  
-  .card-list {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
-  
-  .card-list th, .card-list td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .card-list th {
-    background-color: #4CAF50;
-    color: white;
-    text-align: left;
-  }
-  
-  .download-csv-btn {
-    padding: 10px 20px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #4CAF50;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  .download-csv-btn:hover {
-    background-color: #eee;
-  }
-  
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+}
+
+.navbar {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left {
+  font-size: 24px;
+  color: white;
+}
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-center .audio-settings {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-center .audio-settings label {
+  color: white;
+  margin-right: 10px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-audio-controls-btn {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #4CAF50;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.toggle-audio-controls-btn:hover {
+  background-color: #eee;
+}
+
+.stream-btn {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.stream-btn:hover {
+  background-color: #45a049;
+}
+
+.app-container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  padding-right: 20px; /* Add padding to the right */
+}
+
+.card-list-container {
+  flex: 2;
+  padding: 20px;
+  border-right: 2px solid #ccc;
+  overflow-y: auto;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.card-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  max-width: 300px; /* Set a maximum width for the form */
+  height: calc(100vh - 160px); /* Fit the form to the page vertically */
+  overflow-y: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.card-form input, .card-form textarea, .card-form select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.card-form button {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.card-form button:hover {
+  background-color: #45a049;
+}
+
+.card-form button.recording {
+  background-color: #ff0000;
+}
+
+.audio-controls {
+  margin-bottom: 20px;
+}
+
+.transcribing {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.card-list {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.card-list th, .card-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.card-list th {
+  background-color: #4CAF50;
+  color: white;
+  text-align: left;
+}
+
+.card-list .edit-btn, .card-list .delete-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.card-list .edit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.card-list .edit-btn:hover {
+  background-color: #45a049;
+}
+
+.card-list .delete-btn {
+  background-color: #ff0000;
+  color: white;
+}
+
+.card-list .delete-btn:hover {
+  background-color: #cc0000;
+}
+
+.download-csv-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #4CAF50;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.download-csv-btn:hover {
+  background-color: #eee;
+}

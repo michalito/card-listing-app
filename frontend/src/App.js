@@ -9,8 +9,8 @@ const App = () => {
   const [formData, setFormData] = useState({
     name: '',
     set: '',
-    price: '',
-    quantity: '',
+    price: 1,
+    quantity: 1,
     isFoil: false,
     condition: 'NM',
     language: 'English',
@@ -24,6 +24,7 @@ const App = () => {
   const [currentField, setCurrentField] = useState('');
   const [currentRecordingField, setCurrentRecordingField] = useState('');
   const [cardList, setCardList] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const [transcribing, setTranscribing] = useState(false);
@@ -52,21 +53,40 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addCard(formData);
+    if (editIndex !== null) {
+      updateCard(formData, editIndex);
+    } else {
+      addCard(formData);
+    }
     setFormData({
       name: '',
       set: '',
-      price: '',
-      quantity: '',
+      price: 1,
+      quantity: 1,
       isFoil: false,
       condition: 'NM',
       language: 'English',
       comment: ''
     });
+    setEditIndex(null);
   };
 
   const addCard = (card) => {
     setCardList(prevCardList => [card, ...prevCardList]); // Add card to the top
+  };
+
+  const updateCard = (card, index) => {
+    setCardList(prevCardList => prevCardList.map((c, i) => i === index ? card : c));
+  };
+
+  const deleteCard = (index) => {
+    setCardList(prevCardList => prevCardList.filter((card, i) => i !== index));
+  };
+
+  const editCard = (index) => {
+    const cardToEdit = cardList[index];
+    setFormData(cardToEdit);
+    setEditIndex(index);
   };
 
   const handleStartRecording = () => {
@@ -224,6 +244,7 @@ const App = () => {
                 <th>Condition</th>
                 <th>Language</th>
                 <th>Comment</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -237,6 +258,10 @@ const App = () => {
                   <td>{card.condition}</td>
                   <td>{card.language}</td>
                   <td>{card.comment}</td>
+                  <td>
+                    <button className="edit-btn" onClick={() => editCard(index)}>Edit</button>
+                    <button className="delete-btn" onClick={() => deleteCard(index)}>Delete</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -287,7 +312,7 @@ const App = () => {
             <button type="button" className={currentRecordingField === 'comment' ? 'recording' : ''} onClick={() => handleRecord('comment')}>Record</button>
           </div>
           
-          <button type="submit">Add Card</button>
+          <button type="submit">{editIndex !== null ? 'Update Card' : 'Add Card'}</button>
         </form>
       </div>
       {transcribing && <p className="transcribing">Transcribing...</p>}

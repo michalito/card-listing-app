@@ -21,6 +21,8 @@ const App = () => {
   const [isStreaming, setIsStreaming] = useState(false);
   const [stream, setStream] = useState(null);
   const [selectedDevice, setSelectedDevice] = useState(localStorage.getItem('defaultAudioDevice') || '');
+  const [defaultSet, setDefaultSet] = useState(localStorage.getItem('defaultSet') || '');
+  const [useDefaultSet, setUseDefaultSet] = useState(false);
   const [currentField, setCurrentField] = useState('');
   const [currentRecordingField, setCurrentRecordingField] = useState('');
   const [cardList, setCardList] = useState([]);
@@ -36,12 +38,16 @@ const App = () => {
         .catch(error => console.error('Error accessing audio device:', error));
     }
 
+    if (defaultSet) {
+      setFormData(prevFormData => ({ ...prevFormData, set: defaultSet }));
+    }
+
     return () => {
       if (stream) {
         stream.getTracks().forEach(track => track.stop());
       }
     };
-  }, [selectedDevice]);
+  }, [selectedDevice, defaultSet]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -60,7 +66,7 @@ const App = () => {
     }
     setFormData({
       name: '',
-      set: '',
+      set: useDefaultSet ? defaultSet : '',
       price: 1,
       quantity: 1,
       isFoil: false,
@@ -194,6 +200,20 @@ const App = () => {
     setCurrentRecordingField(isRecording ? '' : field);
   };
 
+  const handleDefaultSetChange = () => {
+    if (useDefaultSet) {
+      localStorage.setItem('defaultSet', formData.set);
+      setDefaultSet(formData.set);
+    } else {
+      localStorage.removeItem('defaultSet');
+      setDefaultSet('');
+    }
+  };
+
+  useEffect(() => {
+    handleDefaultSetChange();
+  }, [useDefaultSet, formData.set]);
+
   const headers = [
     { label: "Name", key: "name" },
     { label: "Set", key: "set" },
@@ -276,7 +296,13 @@ const App = () => {
           <div className="form-group">
             <label>Set</label>
             <input type="text" name="set" value={formData.set} onChange={handleChange} placeholder="Set" required />
-            <button type="button" className={currentRecordingField === 'set' ? 'recording' : ''} onClick={() => handleRecord('set')}>Record</button>
+            <div className="set-controls">
+              <div className="default-set">
+                <input type="checkbox" checked={useDefaultSet} onChange={() => setUseDefaultSet(!useDefaultSet)} />
+                <label>Default</label>
+              </div>
+              <button type="button" className={currentRecordingField === 'set' ? 'recording' : ''} onClick={() => handleRecord('set')}>Record</button>
+            </div>
           </div>
           <div className="form-group">
             <label>Price</label>

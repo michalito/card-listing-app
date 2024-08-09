@@ -41,21 +41,6 @@ body, html, #root, .app-container {
   align-items: center;
 }
 
-.toggle-audio-controls-btn {
-  padding: 10px;
-  font-size: 14px;
-  border: none;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #4CAF50;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.toggle-audio-controls-btn:hover {
-  background-color: #eee;
-}
-
 .stream-btn {
   padding: 10px;
   font-size: 14px;
@@ -149,6 +134,22 @@ body, html, #root, .app-container {
 
 .card-form button.recording {
   background-color: #ff0000;
+}
+
+.set-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.default-set {
+  display: flex;
+  align-items: center;
+}
+
+.default-set label {
+  margin-left: 5px;
 }
 
 .audio-controls {
